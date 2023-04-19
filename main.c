@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
 	char *algo, **args;
 	size_t size = 64;
-	int status;
+	int status = 1;
 
 	(void)argv;
 	(void)argc;
@@ -30,26 +30,52 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
-#define BUFF_TOKEN 64
 #define DELIMIT " \t\r\n\a"
 char **split(char *line)
 {
 	char *list;
-	char **args;
-	int count = 0, buff = BUFF_TOKEN;
+	token_t *args;
+	int count = 0;
 
-	args = malloc(sizeof(char) * buff);
+	args = malloc(sizeof(token_t));
 	if (!args)
 		return (NULL);
+	args = NULL;
 	list = strtok(line, DELIMIT);
 	while (list != NULL)
 	{
-		args[count] = list;
+		add_node_end(&args, list);
 		count++;
 		list = strtok(NULL, DELIMIT);
 	}
-	args[count] = NULL;
-	return (args);
+	return (convert(&args));
+}
+
+char **convert(token_t **args)
+{
+	char **list;
+	token_t *temp;
+	int count = 0, sum = 0;
+	
+	temp = *args;
+	while (temp)
+	{
+		sum += temp->len;
+		temp = temp->next;
+	}
+	list = malloc(sum * sizeof(char) + 1);
+	temp = *args;
+	while (*args)
+	{
+		*args = (*args)->next;
+		list[count] = strdup(temp->token);
+		free(temp->token);
+		free(temp);
+		temp = temp->next;
+		count++;
+	}
+	list[count] = NULL;
+	return (list);
 }
 
 int execute(char **args)
