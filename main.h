@@ -34,6 +34,5 @@ token_t *add_node_end(token_t **head, const char *str);
 void free_list(token_t *head);
 char *_getenv(char *str);
 token_t *_stat_checker(token_t *head, token_t *path);
-char **convert(token_t *args);
 
 #endif

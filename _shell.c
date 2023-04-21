@@ -16,12 +16,6 @@ int main(void)
         path_token = tokenicer(path, ":");
         test = _stat_checker(test, path_token);
         free(path_token);
-        array = convert(test);
-        while (array[count])
-        {
-            printf("%s\n", array[count]);
-            count++;
-        }
     }
 }
 
