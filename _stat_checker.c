@@ -9,17 +9,18 @@ token_t *_stat_checker(token_t *head, token_t *path)
 
     buff = malloc(sizeof(struct stat));
 
-    while(path)
+    temp = path;
+    while(temp)
     {
-        temp = path;
-        strcat(path->token, "/");
-        strcat(path->token, strdup(head->token));
-        if (stat(path->token, buff) == 0)
+        strcat(temp->token, "/");
+        strcat(temp->token, strdup(head->token));
+        if (stat(temp->token, buff) == 0)
         {
-            head->token = strdup(path->token);
+            head->token = strdup(temp->token);
         }
-        path = path->next;
-        free(temp);
+        temp = temp->next;
     }
+    free_list(path);
+    free(buff);
     return (head);
 }
