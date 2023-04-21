@@ -1,8 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define DELIMIT " \t\r\n\a"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -30,10 +28,12 @@ typedef struct token_s
 	struct token_s *next;
 } token_t;
 
+char *Read_line(void);
+token_t *tokenicer(char *line, char *delimit);
 token_t *add_node_end(token_t **head, const char *str);
-char **split(char *line);
-int execute(char **args);
-char **convert(token_t **args);
-char **_PATH(void);
+void free_list(token_t *head);
+char *_getenv(char *str);
+token_t *_stat_checker(token_t *head, token_t *path);
+char **convert(token_t *args);
 
 #endif
