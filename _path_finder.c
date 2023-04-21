@@ -28,7 +28,8 @@ char *_getenv(char *str)
             fix++;
             count++;
         }
-        string = returnable;
+        string = strdup(returnable);
     }
+    free(returnable);
     return (string);
 }
