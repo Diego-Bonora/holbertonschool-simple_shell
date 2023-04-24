@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * _env: read environ var and print it, add one to general counter
- * 
+ * _env - read environ var and print it.
 */
 
 void _env(void)

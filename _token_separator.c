@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * tokeniicer - separate strings with a given delimiter and stores it in a linked list
+ * tokenicer - separate strings with a delimitter
  * @line: string to tokeniz
- * @delim: string used like a delimitter
- * 
- * Return - a linked list with values of string tokenized
+ * @delimit: string used like a delimitter
+ * Return: a linked list with values of string tokenized
  */
 
 token_t *tokenicer(char *line, char *delimit)

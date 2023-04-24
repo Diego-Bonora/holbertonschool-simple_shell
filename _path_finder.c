@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * _getenv: takes environ var search and extract path as a string
+ * _getenv - takes environ var search and extract path as a string
  * @str: string to search into environ var, "PATH" int this case
- * 
- * Return - a string with the path
+ * Return: a string with the path
 */
 
 char *_getenv(char *str)

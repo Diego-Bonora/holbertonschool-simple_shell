@@ -4,8 +4,7 @@
  * main - execute a simple shell
  * @argc: a count of argumentos on argv
  * @argv: vector of arguments given to shell
- * 
- * Return - 0 on success and stat on exit
+ * Return: 0 on success and stat on exit
 */
 
 int main(__attribute__((unused)) int argc, char *argv[])
@@ -51,6 +50,12 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		free(path);
 		free(line); }
 	return (0); }
+
+/**
+ * Read_line - prints a prompt and read user input
+ * @_exit_: a count of argumentos on argv
+ * Return: 0 on success and stat on exit
+*/
 
 char *Read_line(ssize_t *_exit_)
 {

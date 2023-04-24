@@ -7,7 +7,7 @@
 
 ## Usage
 
-## Authoes
+## Authores
 Diego Bonora
 Emily Sanchez
 Pablo Riveiro

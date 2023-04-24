@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * _stat_chequer - pruves a command on differents folders of path till it could execute
+ * _stat_checker - pruves a command on different paths
  * @head: linked list with command and arguments
  * @path: a tring with the path route
- * 
- * Return - a valid string with the full path to execute
+ * Return: a valid string with the full path to execute
 */
 
 token_t *_stat_checker(token_t *head, token_t *path)

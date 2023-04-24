@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * _lsit_to_array: takes a listed link and returns its elments as an array
+ * _list_to_array - takes a listed link and returns its elments as an array
  * @head: the head of a linked lsit
- * 
- * Return : an array with linked list elements
+ * Return: an array with linked list elements
 */
 
 char **_list_to_array(token_t *head)
