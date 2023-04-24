@@ -1,6 +1,12 @@
 #include "main.h"
 
-/***/
+/**
+ * main - execute a simple shell
+ * @argc: a count of argumentos on argv
+ * @argv: vector of arguments given to shell
+ * 
+ * Return - 0 on success and stat on exit
+*/
 
 int main(__attribute__((unused)) int argc, char *argv[])
 {	int count = 1, status = 1, free_;
