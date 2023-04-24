@@ -4,14 +4,13 @@
 
 int main(void)
 {
-    int count, status = 1, free_ = 0;
+    int status = 1, free_ = 0;
     ssize_t _exit_ = 0;
     token_t *args_token, *path_token;
     char *line = NULL, *path = NULL, **array = NULL;
 
     while (status)
     {
-        count = 0;
         line = Read_line(&_exit_);
         if (_exit_ == -1)
             return (0);
