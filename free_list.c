@@ -18,4 +18,5 @@ void free_list(token_t *head)
 		free(temp);
 		temp = head;
 	}
+	free(head);
 }

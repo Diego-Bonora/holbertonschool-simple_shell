@@ -2,38 +2,58 @@
 
 /***/
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    int status = 1, free_ = 0;
+    int count = 1, status = 1, free_;
     ssize_t _exit_ = 0;
-    token_t *args_token, *path_token;
+    token_t *args_token, *path_token, *command = NULL;
     char *line = NULL, *path = NULL, **array = NULL;
 
+    (void)argc;
     while (status)
     {
+        free_ = 0;
         line = Read_line(&_exit_);
-        if (_exit_ == -1)
-            return (0);
         args_token = tokenicer(line, " \t\r\n\a");
+        if (!args_token)
+        {
+            free(line);
+            continue;
+        }
+        if (strcmp(args_token->token, "exit") == 0 && args_token->next == NULL)
+        {
+            free_list(args_token);
+            free(line);
+            if (_exit_ == 0)
+                exit(0);
+            exit(127);
+        }
         path = _getenv("PATH");
         path_token = tokenicer(path, ":");
-        args_token = _stat_checker(args_token, path_token);
-        array = _list_to_array(args_token);
-        if (strcmp(array[0], "exit") == 0 && array[1] == NULL)
+        if (!path_token)
         {
-            free(array[0]);
-            free(array);
-            free(path);
+            free_list(args_token);
             free(line);
-            return (0);
+            continue;
         }
+        command = _stat_checker(args_token, path_token);
+        array = _list_to_array(args_token);
+        if (!command)
+        {
+            fprintf(stderr, "%s: %d: %s: not Found\n", argv[0], count, line);
+            free(line);
+            _exit_ = 1;
+            continue;
+        }
+        else
+            _exit_ = 0;
         status = _exeCute(array);
         while(array[free_])
         {
             free(array[free_]);
             free_++;
         }
-        free(array);
+        count++;
         free(path);
         free(line);
     }
@@ -42,11 +62,24 @@ int main(void)
 
 char *Read_line(ssize_t *_exit_)
 {
-    char *str = NULL;
-    size_t size;
+    int num = 0;
+    char *str = NULL, *line = NULL;
+    size_t size = 0;
 
     printf("DEPS -> ");
-    str = malloc(sizeof(char) * 64);
-    *_exit_ = getline(&str, &size, stdin);
-    return(str);
+    num = getline(&str, &size, stdin);
+    if (num != -1)
+    {
+        line = malloc(sizeof(char) * num);
+        strcpy(line, str);
+        free(str);
+    }
+    else
+    {
+        free(str);
+        if (*_exit_ == 0)
+            exit(0);
+        exit(127);
+    }
+    return(line);
 }

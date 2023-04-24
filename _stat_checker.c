@@ -17,10 +17,13 @@ token_t *_stat_checker(token_t *head, token_t *path)
         if (stat(temp->token, buff) == 0)
         {
             head->token = strdup(temp->token);
+            free_list(path);
+            free(buff);
+            return (head);
         }
         temp = temp->next;
     }
     free_list(path);
     free(buff);
-    return (head);
+    return (NULL);
 }

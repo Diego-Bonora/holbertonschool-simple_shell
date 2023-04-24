@@ -14,12 +14,12 @@ char **_list_to_array(token_t *head)
         count++;
         temp = temp->next;
     }
-    array = malloc(count * sizeof(char *) + 1);
+    array = malloc(count * sizeof(char *));
     temp = head;
     count = 0;
     while (temp)
     {
-        array[count] = malloc(sizeof(char) * strlen(temp->token) + 1);
+        array[count] = malloc(sizeof(char) * strlen(temp->token));
         count++;
         temp = temp->next;
     }
