@@ -4,11 +4,11 @@
 
 void _env(void)
 {
-    int count = 0;
+	int count = 0;
 
-    while (environ[count])
-    {
-        printf("%s\n", environ[count]);
-        count++;
-    }
+	while (environ[count])
+	{
+		printf("%s\n", environ[count]);
+		count++;
+	}
 }

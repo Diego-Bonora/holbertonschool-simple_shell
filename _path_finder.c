@@ -4,32 +4,32 @@
 
 char *_getenv(char *str)
 {
-    char *string = NULL, *returnable = NULL;
-    int count = 0, fix = 0;
+	char *string = NULL, *string_r = NULL;
+	int count = 0, fix = 0;
 
-    while (environ[count])
-    {
-        if (strstr(environ[count], str))
-        {
-            string = strdup(environ[count]);
-            break;
-        }
-        count++;
-    }
-    
-    returnable = malloc(sizeof(char) * strlen(string) - 5);
+	while (environ[count])
+	{
+		if (strstr(environ[count], str))
+		{
+			string = strdup(environ[count]);
+			break;
+		}
+		count++;
+	}
 
-    count = 5;
-    if (string)
-    {
-        while (string[count])
-        {
-            returnable[fix] = string[count];
-            fix++;
-            count++;
-        }
-        string = strdup(returnable);
-    }
-    free(returnable);
-    return (string);
+	string_r = malloc(sizeof(char) * strlen(string) - 5);
+
+	count = 5;
+	if (string)
+	{
+		while (string[count])
+		{
+			string_r[fix] = string[count];
+			fix++;
+			count++;
+		}
+		string = strdup(string_r);
+	}
+	free(string_r);
+	return (string);
 }
