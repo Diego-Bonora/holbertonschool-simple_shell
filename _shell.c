@@ -47,6 +47,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{	free(array[free_]);
 			free_++; }
 		count++;
+		free(array);
 		free(line); }
 	return (0); }
 
@@ -59,26 +60,19 @@ int main(__attribute__((unused)) int argc, char *argv[])
 char *Read_line(ssize_t *_exit_)
 {
 	int num = 0;
-	char *str = NULL, *line = NULL;
+	char *str = NULL;
 	size_t size = 0;
 	int fd = isatty(num);
 
 	if (fd == 1)
 		printf("DEPS -> ");
 	num = getline(&str, &size, stdin);
-	if (num != -1)
+	if (num == -1)
 	{
-		line = malloc(sizeof(char) * num);
-		strcpy(line, str);
-		free(str);
-	}
-	else
-	{
-		free(line);
 		free(str);
 		if (*_exit_ == 0)
 			exit(0);
 		exit(127);
 	}
-	return (line);
+	return (str);
 }

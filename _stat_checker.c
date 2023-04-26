@@ -47,7 +47,7 @@ token_t *_stat_checker(token_t *head, token_t *path)
 		}
 		temp = temp->next;
 	}
-	free_list(path);
+
 	free(buff);
 	return (NULL);
 }

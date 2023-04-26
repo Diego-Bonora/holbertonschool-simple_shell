@@ -9,7 +9,8 @@
 void free_list(token_t *head)
 {
 	token_t *temp;
-
+	if (head == NULL)
+		return;
 	temp = head;
 	while (head != NULL)
 	{
