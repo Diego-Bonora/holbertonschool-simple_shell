@@ -33,7 +33,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 			free(line);
 			continue; }
 		command = _stat_checker(args_token, path_token);
-		array = _list_to_array(args_token);
 		if (!command)
 		{	fprintf(stderr, "%s: %d: %s: not Found\n", argv[0], count, line);
 			free(line);
@@ -42,6 +41,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 			continue; }
 		else
 			_exit_ = 0;
+		array = _list_to_array(args_token);
 		status = _exeCute(array);
 		while (array[free_])
 		{	free(array[free_]);
@@ -62,8 +62,10 @@ char *Read_line(ssize_t *_exit_)
 	int num = 0;
 	char *str = NULL, *line = NULL;
 	size_t size = 0;
+	int fd = isatty(num);
 
-	printf("DEPS -> ");
+	if (fd == 1)
+		printf("DEPS -> ");
 	num = getline(&str, &size, stdin);
 	if (num != -1)
 	{
