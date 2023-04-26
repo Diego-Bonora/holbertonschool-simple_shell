@@ -10,9 +10,7 @@ int _exeCute(char **args)
 {
 	pid_t pid = 0;
 	int status = 0;
-	struct stat *buff;
 
-	buff = malloc(sizeof(struct stat));
 	pid = fork();
 	if (pid == 0)
 	{
@@ -35,6 +33,5 @@ int _exeCute(char **args)
 	{
 		wait(&status);
 	}
-	free(buff);
 	return (1);
 }
