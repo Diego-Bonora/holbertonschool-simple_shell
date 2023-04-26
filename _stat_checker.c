@@ -15,6 +15,12 @@ token_t *_stat_checker(token_t *head, token_t *path)
 	buff = malloc(sizeof(struct stat));
 
 	temp = path;
+	if (stat(head->token, buff) == 0)
+	{
+		free_list(path);
+		free(buff);
+		return (head);
+	}
 	while (temp)
 	{
 		strcat(temp->token, "/");
