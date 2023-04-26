@@ -10,17 +10,17 @@
 token_t *add_node_end(token_t **head, const char *str)
 {
 	token_t *temp;
-	token_t *recorer;
+	token_t *loop;
 	unsigned int len;
 
-	recorer = malloc(sizeof(token_t));
-	if (!recorer)
+	loop = malloc(sizeof(token_t));
+	if (!loop)
 		return (NULL);
 
 	temp = malloc(sizeof(token_t));
 	if (!temp)
 	{
-		free(recorer);
+		free(loop);
 		return (NULL);
 	}
 
@@ -31,18 +31,19 @@ token_t *add_node_end(token_t **head, const char *str)
 	if (*head == NULL)
 	{
 		*head = temp;
+		free(loop);
 	}
 	else
 	{
-		recorer = *head;
-		while (recorer != NULL)
+		loop = *head;
+		while (loop != NULL)
 		{
-			if (recorer->next == NULL)
+			if (loop->next == NULL)
 			{
-				recorer->next = temp;
+				loop->next = temp;
 				break;
 			}
-			recorer = recorer->next;
+			loop = loop->next;
 		}
 	}
 	return (*head);

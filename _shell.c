@@ -10,7 +10,7 @@
 int main(__attribute__((unused)) int argc, char *argv[])
 {	int count = 1, status = 1, free_;
 	ssize_t _exit_ = 0;
-	token_t *args_token, *path_token, *command = NULL;
+	token_t *args_token = NULL, *path_token = NULL, *command = NULL;
 	char *line = NULL, *path = NULL, **array = NULL;
 
 	while (status)
@@ -47,7 +47,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{	free(array[free_]);
 			free_++; }
 		count++;
-		free(path);
 		free(line); }
 	return (0); }
 
@@ -75,6 +74,7 @@ char *Read_line(ssize_t *_exit_)
 	}
 	else
 	{
+		free(line);
 		free(str);
 		if (*_exit_ == 0)
 			exit(0);
