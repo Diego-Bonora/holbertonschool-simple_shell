@@ -9,15 +9,25 @@
 token_t *_getenv(char *str)
 {
 	char *string = NULL, *string_r = NULL;
-	int count = 0;
+	int count = 0, count2 = 0;
+	long unsigned int flag;
 	token_t *path;
 
 	while (environ[count])
 	{
-		if (strstr(environ[count], str))
+		flag = 0;
+		count2 = 0;
+		while (str[count2])
 		{
-			string = strdup(environ[count]);
-			break;
+			if (environ[count][count2] != str[count2])
+				break;
+			flag++;
+			count2++;
+			if (flag == strlen(str))
+			{
+				string = strdup(environ[count]);
+				break;
+			}
 		}
 		count++;
 	}
