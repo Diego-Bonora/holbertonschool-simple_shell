@@ -6,21 +6,23 @@
  * Return: a string with the path
 */
 
-char *_getenv(char *str)
+token_t *_getenv(char *str)
 {
-	char *string = NULL;
+	char *string = NULL, *string_r = NULL;
 	int count = 0;
+	token_t *path;
 
 	while (environ[count])
 	{
 		if (strstr(environ[count], str))
 		{
-			string = malloc(strlen(environ[count]));
-			strcpy(string, environ[count]);
+			string = strdup(environ[count]);
 			break;
 		}
 		count++;
 	}
-	string = strtok(string, "PATH=");
-	return (string);
+	string_r = strtok(string, "PATH=");
+	path = tokenicer(string_r, ":");
+	free(string);
+	return (path);
 }
