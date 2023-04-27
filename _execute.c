@@ -6,7 +6,7 @@
  * Return: 1 on success
 */
 
-int _exeCute(char **args)
+int _EXE_Cute(char **args)
 {
 	pid_t pid = 0;
 	int status = 1;
