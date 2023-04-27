@@ -7,12 +7,13 @@
  * Return: 0 on success and stat on exit
 */
 
-int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
+int main(__attribute__((unused)) int argc, char *argv[])
 {	int count = 1, status = 1, free_;
 	ssize_t _exit_ = 0;
 	token_t *args_token = NULL, *path_token = NULL, *command = NULL;
 	char *line = NULL, **array = NULL;
 
+	(void)argv;
 	(void)free_;
 	while (status)
 	{	free_ = 0;
@@ -55,7 +56,7 @@ char *Read_line(ssize_t *_exit_)
 
 	if (fd == 1)
 		printf("DEPS -> ");
-	
+
 	if (getline(&str, &size, stdin) == -1)
 	{
 		free(str);

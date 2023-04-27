@@ -4,12 +4,14 @@
  * _stat_checker - pruves a command on different paths
  * @head: linked list with command and arguments
  * @path: a tring with the path route
+ * @line: input line for sending an error
+ * @count: count for printing an error
  * Return: a valid string with the full path to execute
 */
 
 token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
 {
-	token_t *temp;	
+	token_t *temp;
 	struct stat *buff;
 
 	buff = malloc(sizeof(struct stat));
