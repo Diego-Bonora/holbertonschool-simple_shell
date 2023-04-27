@@ -31,7 +31,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		if (!command)
 		{	_exit_ = 1;
 			count++;
-			free(path);
 			continue; }
 		else
 			_exit_ = 0;
