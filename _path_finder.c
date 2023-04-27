@@ -32,9 +32,9 @@ token_t *_getenv(char *str)
 		count++;
 	}
 	string_r = strtok(string, "PATH=");
+	if (!string_r)
+		return (NULL);
 	path = tokenicer(string_r, ":");
 	free(string);
-	if (!path)
-		return (NULL);
 	return (path);
 }

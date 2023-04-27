@@ -4,12 +4,10 @@
  * _stat_checker - pruves a command on different paths
  * @head: linked list with command and arguments
  * @path: a tring with the path route
- * @line: input line for sending an error
- * @count: count for printing an error
  * Return: a valid string with the full path to execute
 */
 
-token_t *_stat_checker(token_t *head, token_t *path, char *line, int count, char *argv)
+token_t *_stat_checker(token_t *head, token_t *path)
 {
 	token_t *temp;
 	struct stat *buff;
@@ -41,8 +39,6 @@ token_t *_stat_checker(token_t *head, token_t *path, char *line, int count, char
 		free(new_str);
 		temp = temp->next;
 	}
-	fprintf(stderr, "%s: %d: %s: not Found\n", argv, count, line);
-	free(line);
 	free(buff);
 	free_list(head);
 	free_list(path);

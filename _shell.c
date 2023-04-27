@@ -25,9 +25,11 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{	free(line);
 			continue; }
 		path_token = _getenv("PATH");
-		command = _stat_checker(args_token, path_token, line, count, argv[0]);
+		command = _stat_checker(args_token, path_token);
 		if (!command)
 		{	_exit_ = 1;
+			fprintf(stderr, "%s: %d: %s: not Found\n", argv[0], count, line);
+			free(line);
 			count++;
 			continue; }
 		else
