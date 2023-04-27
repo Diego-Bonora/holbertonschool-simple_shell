@@ -13,14 +13,9 @@ token_t *add_node_end(token_t **head, const char *str)
 	token_t *loop;
 	unsigned int len;
 
-	loop = malloc(sizeof(token_t));
-	if (!loop)
-		return (NULL);
-
 	temp = malloc(sizeof(token_t));
 	if (!temp)
 	{
-		free(loop);
 		return (NULL);
 	}
 
@@ -31,7 +26,6 @@ token_t *add_node_end(token_t **head, const char *str)
 	if (*head == NULL)
 	{
 		*head = temp;
-		free(loop);
 	}
 	else
 	{
