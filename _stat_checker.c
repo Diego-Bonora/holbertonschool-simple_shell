@@ -37,16 +37,13 @@ token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
 			free(buff);
 			return (head);
 		}
+		free(compare_str);
+		free(new_str);
 		temp = temp->next;
 	}
 	fprintf(stderr, "%s: %d: %s: not Found\n", head->token, count, line);
 	free(line);
 	free(buff);
-	if (new_str)
-	{
-		free(new_str);
-		free(compare_str);
-	}
 	free_list(head);
 	free_list(path);
 	return (NULL);
