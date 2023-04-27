@@ -10,7 +10,7 @@ token_t *_getenv(char *str)
 {
 	char *string = NULL, *string_r = NULL;
 	int count = 0, count2 = 0;
-	long unsigned int flag;
+	unsigned long int flag = 0;
 	token_t *path;
 
 	while (environ[count])

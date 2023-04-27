@@ -49,6 +49,13 @@ token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
 	return (NULL);
 }
 
+/**
+ * _concat - concatenates two string
+ * @str: the first part of the string
+ * @add: the last part of the string
+ * Return: Returns a new string with the necesary ammount of memory
+*/
+
 char *_concat(char *str, char *add)
 {
 	char *new = NULL;
@@ -58,12 +65,12 @@ char *_concat(char *str, char *add)
 	if (!new)
 		return (NULL);
 
-	while(str[count])
+	while (str[count])
 	{
 		new[count] = str[count];
 		count++;
 	}
-	while(add[counter])
+	while (add[counter])
 	{
 		new[count] = add[counter];
 		count++;

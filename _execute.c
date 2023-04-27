@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _exeCute - executes command on system
+ * _EXE_Cute - executes command on system
  * @args: vector with user input
  * Return: 1 on success
 */
