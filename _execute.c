@@ -19,10 +19,6 @@ int _exeCute(char **args)
 			perror("Command invalid");
 			exit(EXIT_FAILURE);
 		}
-		else if (strcmp(args[0], "env") == 0 && args[1] == NULL)
-		{
-			_env();
-		}
 	}
 	else if (pid < 0)
 	{

@@ -18,6 +18,10 @@ int main(__attribute__((unused)) int argc, char *argv[])
 	while (status >= 0)
 	{	free_ = 0;
 		line = Read_line(&_exit_);
+		if (strcmp(line, "env\n") == 0)
+		{	_env();
+			free(line);
+			continue; }
 		args_token = tokenicer(line, " \t\r\n\a");
 		if (!args_token)
 		{	free(line);
