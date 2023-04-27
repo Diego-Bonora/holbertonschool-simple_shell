@@ -34,5 +34,7 @@ token_t *_getenv(char *str)
 	string_r = strtok(string, "PATH=");
 	path = tokenicer(string_r, ":");
 	free(string);
+	if (!path)
+		return (NULL);
 	return (path);
 }
