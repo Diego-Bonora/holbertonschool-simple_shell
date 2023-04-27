@@ -9,7 +9,7 @@
  * Return: a valid string with the full path to execute
 */
 
-token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
+token_t *_stat_checker(token_t *head, token_t *path, char *line, int count, char *argv)
 {
 	token_t *temp;
 	struct stat *buff;
@@ -41,7 +41,7 @@ token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
 		free(new_str);
 		temp = temp->next;
 	}
-	fprintf(stderr, "%s: %d: %s: not Found\n", head->token, count, line);
+	fprintf(stderr, "%s: %d: %s: not Found\n", argv, count, line);
 	free(line);
 	free(buff);
 	free_list(head);

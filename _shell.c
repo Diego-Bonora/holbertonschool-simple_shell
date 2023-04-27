@@ -13,7 +13,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 	token_t *args_token = NULL, *path_token = NULL, *command = NULL;
 	char *line = NULL, **array = NULL;
 
-	(void)argv;
 	while (status >= 0)
 	{	free_ = 0;
 		line = Read_line(&_exit_);
@@ -26,7 +25,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{	free(line);
 			continue; }
 		path_token = _getenv("PATH");
-		command = _stat_checker(args_token, path_token, line, count);
+		command = _stat_checker(args_token, path_token, line, count, argv[0]);
 		if (!command)
 		{	_exit_ = 1;
 			count++;
