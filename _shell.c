@@ -11,9 +11,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 {	int count = 1, status = 1, free_;
 	ssize_t _exit_ = 0;
 	token_t *args_token = NULL, *path_token = NULL, *command = NULL;
-	char *line = NULL, *path = NULL, **array = NULL;
+	char *line = NULL, **array = NULL;
 
-	(void)path;
 	(void)free_;
 	while (status)
 	{	free_ = 0;
@@ -32,11 +31,9 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 		{	_exit_ = 1;
 			count++;
 			free(path);
-			puts("aa");
 			continue; }
 		else
 			_exit_ = 0;
-		puts("a");
 		array = _list_to_array(args_token);
 		status = _exeCute(array);
 		count++;
