@@ -35,7 +35,7 @@ void free_list(token_t *head);
 token_t *_getenv(char *str);
 token_t *_stat_checker(token_t *head, token_t *path, char *line, int count);
 char **_list_to_array(token_t *head);
-int _exeCute(char **args);
+int _EXE_Cute(char **args);
 void _env(void);
 char *_concat(char *str, char *add);
 
