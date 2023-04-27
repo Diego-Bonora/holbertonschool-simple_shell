@@ -7,14 +7,12 @@
  * Return: a valid string with the full path to execute
 */
 
-token_t *_stat_checker(token_t *head, token_t *path)
+token_t *_stat_checker(token_t *head, token_t *path, char *line, int count)
 {
-	token_t *temp, *arguments;	
+	token_t *temp;	
 	struct stat *buff;
-	char *temp_str;
 
 	buff = malloc(sizeof(struct stat));
-
 	temp = path;
 	if (stat(head->token, buff) == 0)
 	{
@@ -24,22 +22,11 @@ token_t *_stat_checker(token_t *head, token_t *path)
 	}
 	while (temp)
 	{
-		arguments = head;
 		strcat(temp->token, "/");
-		strcat(temp->token, strdup(head->token));
-		temp_str = temp->token;
-		if (arguments->next)
+		strcat(temp->token, head->token);
+		if (stat(temp->token, buff) == 0)
 		{
-			arguments = arguments->next;
-			while (arguments)
-			{
-				strcat(temp_str, " ");
-				strcat(temp_str, strdup(arguments->token));
-				arguments = arguments->next;
-			}
-		}
-		if (stat(temp_str, buff) == 0)
-		{
+			free(head->token);
 			head->token = strdup(temp->token);
 			free_list(path);
 			free(buff);
@@ -47,7 +34,10 @@ token_t *_stat_checker(token_t *head, token_t *path)
 		}
 		temp = temp->next;
 	}
-
+	fprintf(stderr, "%s: %d: %s: not Found\n", head->token, count, line);
+	free(line);
 	free(buff);
+	free_list(head);
+	free_list(path);
 	return (NULL);
 }
