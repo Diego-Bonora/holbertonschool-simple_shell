@@ -28,6 +28,5 @@ char **_list_to_array(token_t *head)
 		temp = temp->next;
 	}
 	free_list(head);
-	array[count] = NULL;
 	return (array);
 }
