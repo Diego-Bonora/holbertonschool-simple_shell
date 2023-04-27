@@ -47,8 +47,8 @@ int main(__attribute__((unused)) int argc, char *argv[])
 			free_++;
 		}
 		free(array);
-		count++;
-		free(line); }
+		free(line);
+		count++; }
 	return (0); }
 
 /**
