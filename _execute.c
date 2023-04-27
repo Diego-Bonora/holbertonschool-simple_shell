@@ -9,7 +9,7 @@
 int _exeCute(char **args)
 {
 	pid_t pid = 0;
-	int status = 0;
+	int status = 1;
 
 	pid = fork();
 	if (pid == 0)
