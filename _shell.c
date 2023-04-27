@@ -13,6 +13,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 	token_t *args_token = NULL, *path_token = NULL, *command = NULL;
 	char *line = NULL, *path = NULL, **array = NULL;
 
+	(void)path;
 	(void)free_;
 	while (status)
 	{	free_ = 0;
@@ -21,8 +22,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 		if (!args_token)
 		{	free(line);
 			continue; }
-		path = _getenv("PATH");
-		path_token = tokenicer(path, ":");
+		path_token = _getenv("PATH");
 		if (!path_token)
 		{	free_list(args_token);
 			free(line);
@@ -31,6 +31,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 		if (!command)
 		{	_exit_ = 1;
 			count++;
+			free(path);
 			puts("aa");
 			continue; }
 		else
