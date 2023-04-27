@@ -14,7 +14,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 	char *line = NULL, **array = NULL;
 
 	(void)argv;
-	(void)free_;
 	while (status >= 0)
 	{	free_ = 0;
 		line = Read_line(&_exit_);
@@ -39,9 +38,15 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		else
 			_exit_ = 0;
 		array = _list_to_array(args_token);
-		status = _exeCute(array);
+		status = _EXE_Cute(array);
 		if (status == 512)
 			_exit_ = 2;
+		while (array[free_])
+		{
+			free(array[free_]);
+			free_++;
+		}
+		free(array);
 		count++;
 		free(line); }
 	return (0); }
