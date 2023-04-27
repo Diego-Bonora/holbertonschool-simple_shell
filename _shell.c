@@ -15,7 +15,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 
 	(void)argv;
 	(void)free_;
-	while (status)
+	while (status >= 0)
 	{	free_ = 0;
 		line = Read_line(&_exit_);
 		args_token = tokenicer(line, " \t\r\n\a");
@@ -36,6 +36,8 @@ int main(__attribute__((unused)) int argc, char *argv[])
 			_exit_ = 0;
 		array = _list_to_array(args_token);
 		status = _exeCute(array);
+		if (status == 512)
+			_exit_ = 2;
 		count++;
 		free(line); }
 	return (0); }
@@ -61,14 +63,18 @@ char *Read_line(ssize_t *_exit_)
 		free(str);
 		if (*_exit_ == 0)
 			exit(0);
-		exit(127);
+		else if (*_exit_ == 1)
+			exit(127);
+		exit(2);
 	}
 	else if (strcmp(str, "exit\n") == 0)
 	{
 		free(str);
 		if (*_exit_ == 0)
 			exit(0);
-		exit(127);
+		else if (*_exit_ == 1)
+			exit(127);
+		exit(2);
 	}
 	return (str);
 }

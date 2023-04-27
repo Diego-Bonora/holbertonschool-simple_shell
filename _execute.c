@@ -33,5 +33,5 @@ int _exeCute(char **args)
 	{
 		wait(&status);
 	}
-	return (1);
+	return (status);
 }
