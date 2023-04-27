@@ -33,7 +33,7 @@ token_t *tokenicer(char *line, char *delimit);
 token_t *add_node_end(token_t **head, const char *str);
 void free_list(token_t *head);
 char *_getenv(char *str);
-token_t *_stat_checker(token_t *head, token_t *path);
+token_t *_stat_checker(token_t *head, token_t *path, char *line, int count);
 char **_list_to_array(token_t *head);
 int _exeCute(char **args);
 void _env(void);
