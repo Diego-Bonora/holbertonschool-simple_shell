@@ -26,10 +26,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{	free(line);
 			continue; }
 		path_token = _getenv("PATH");
-		if (!path_token)
-		{	free_list(args_token);
-			free(line);
-			continue; }
 		command = _stat_checker(args_token, path_token, line, count);
 		if (!command)
 		{	_exit_ = 1;
