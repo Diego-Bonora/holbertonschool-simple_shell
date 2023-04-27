@@ -18,7 +18,7 @@ char **_list_to_array(token_t *head)
 		count++;
 		temp = temp->next;
 	}
-	array = malloc(count + 1 * sizeof(char *));
+	array = malloc(count * sizeof(char *) + 1);
 	count = 0;
 	temp = head;
 	while (temp)
@@ -28,6 +28,6 @@ char **_list_to_array(token_t *head)
 		temp = temp->next;
 	}
 	free_list(head);
-	array[count] = NULL;
+	array[count] = '\0';
 	return (array);
 }
