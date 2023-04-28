@@ -10,7 +10,8 @@ The shell does three main things:<br>
 ⦁ <b>Interpret:</b> it reads the commands it is sent and will execute them.<br>
 ⦁ <b>Terminate:</b> after it executes your commands, the shell executes any shutdown commands, frees memory, and terminates.</p>
 
-<h2>Usage.</h2>
+<details>
+ <summary><h2>Usage.</h2></summary>
 
 <h3>Interactive use:</h3>
 
@@ -74,6 +75,7 @@ $
   <pre>
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 </pre>
+</details>
  <details>
  <summary><h2>Flowchart.</h2></summary>
   
