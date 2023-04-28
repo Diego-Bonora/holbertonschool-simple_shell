@@ -9,24 +9,18 @@
 
 token_t *_stat_checker(token_t *head, token_t *path)
 {
-	token_t *temp, *test;
+	token_t *temp;
 	struct stat *buff;
-	char *new_str = NULL, *compare_str = NULL, *temp_str = NULL;
-	int flag = 0;
+	char *new_str = NULL, *compare_str = NULL;
 
 	buff = malloc(sizeof(struct stat));
 	temp = path;
-	temp_str = strdup(head->token);
-	test = tokenicer(temp_str, "./");
-
-	free(temp_str);
-	if (test->next)
-		flag = 1;
-	free_list(test);
-	if (stat(head->token, buff) == 0 && flag == 1)
-	{	free_list(path);
+	if (stat(head->token, buff) == 0)
+	{
+		free_list(path);
 		free(buff);
-		return (head); }
+		return (head);
+	}
 	while (temp)
 	{
 		new_str = _concat(temp->token, "/");
