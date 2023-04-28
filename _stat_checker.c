@@ -11,16 +11,15 @@ token_t *_stat_checker(token_t *head, token_t *path)
 {
 	token_t *temp;
 	struct stat *buff;
-	char *new_str = NULL, *compare_str = NULL;
+	char *new_str = NULL, *compare_str = NULL, *test = NULL;
 
+	test = strdup(head->token);
+	free(head->token);
+	head->token = simplify(test);
+	free(test);
 	buff = malloc(sizeof(struct stat));
 	temp = path;
-	if (stat(head->token, buff) == 0)
-	{
-		free_list(path);
-		free(buff);
-		return (head);
-	}
+
 	while (temp)
 	{
 		new_str = _concat(temp->token, "/");
@@ -74,4 +73,20 @@ char *_concat(char *str, char *add)
 	}
 	new[count] = '\0';
 	return (new);
+}
+
+char *simplify(char *str)
+{
+	token_t *simple, *temp;
+	char *no_path = NULL;
+
+	simple = tokenicer(str, "/");
+	temp = simple;
+	while(temp->next)
+	{
+		temp = temp->next;
+	}
+	no_path = strdup(temp->token);
+	free_list(simple);
+	return (no_path);
 }

@@ -38,5 +38,6 @@ char **_list_to_array(token_t *head);
 int _EXE_Cute(char **args);
 void _env(void);
 char *_concat(char *str, char *add);
+char *simplify(char *str);
 
 #endif
