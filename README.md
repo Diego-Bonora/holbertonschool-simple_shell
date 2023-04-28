@@ -20,10 +20,11 @@ The shell does three main things:<br>
 
 <pre>
  $ ./hsh
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
+DEPS-> /bin/ls
+hsh main.h _shell.c
+DEPS-> ls
+hsh main.h _shell.c
+DEPS-> exit
 $
 </pre>
 
@@ -33,7 +34,7 @@ $
 </p>
 <pre>
 $ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
+hsh main.h _shell.c 
 $
 $ cat test_ls_2
 /bin/ls
