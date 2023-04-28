@@ -55,10 +55,6 @@ $
     <td>Lists the contents of a directory. If used without arguments, lists the contents of the current directory.</td>
   </tr>
   <tr>
-    <td>cd</td>
-    <td>Change the directory where it is positioned.</td>
-  </tr>
-  <tr>
     <td>CTRL+D</td>
     <td>Method to exit the shell through the keyboard.</td>
   </tr>
