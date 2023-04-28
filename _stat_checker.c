@@ -11,17 +11,18 @@ token_t *_stat_checker(token_t *head, token_t *path)
 {
 	token_t *temp;
 	struct stat *buff;
-	char *new_str = NULL, *compare_str = NULL, *test = NULL;
+	char *new_str = NULL, *compare_str = NULL;
 
-	test = strdup(head->token);
-	free(head->token);
-	head->token = simplify(test);
-	free(test);
 	buff = malloc(sizeof(struct stat));
 	temp = path;
-
 	while (temp)
 	{
+		if (stat(head->token, buff) == 0)
+		{
+			free_list(path);
+			free(buff);
+			return (head);
+		}
 		new_str = _concat(temp->token, "/");
 		compare_str = _concat(new_str, head->token);
 		if (stat(compare_str, buff) == 0)
@@ -73,26 +74,4 @@ char *_concat(char *str, char *add)
 	}
 	new[count] = '\0';
 	return (new);
-}
-
-/**
- * simplify - simplyfies the input into only the command
- * @str: the command given by the usr
- * Return: Returns a new string with only the command in it
-*/
-
-char *simplify(char *str)
-{
-	token_t *simple, *temp;
-	char *no_path = NULL;
-
-	simple = tokenicer(str, "/");
-	temp = simple;
-	while (temp->next)
-	{
-		temp = temp->next;
-	}
-	no_path = strdup(temp->token);
-	free_list(simple);
-	return (no_path);
 }
