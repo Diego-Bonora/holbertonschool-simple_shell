@@ -11,18 +11,24 @@ token_t *_stat_checker(token_t *head, token_t *path)
 {
 	token_t *temp;
 	struct stat *buff;
-	char *new_str = NULL, *compare_str = NULL;
+	char *new_str = NULL, *compare_str = NULL, *test = NULL, *test2 = NULL;
 
+	test = strdup(head->token);
+	test2 = simplify(test);
+	free(test);
 	buff = malloc(sizeof(struct stat));
 	temp = path;
+
+	if (stat(head->token, buff) == 0 && stat(test2, buff) == 0)
+	{
+		free_list(path);
+		free(test2);
+		free(buff);
+		return (head);
+	}
+	free(test2);
 	while (temp)
 	{
-		if (stat(head->token, buff) == 0)
-		{
-			free_list(path);
-			free(buff);
-			return (head);
-		}
 		new_str = _concat(temp->token, "/");
 		compare_str = _concat(new_str, head->token);
 		if (stat(compare_str, buff) == 0)
@@ -74,4 +80,45 @@ char *_concat(char *str, char *add)
 	}
 	new[count] = '\0';
 	return (new);
+}
+
+/**
+ * simplify - simplyfies the input into only the command
+ * @str: the command given by the usr
+ * Return: Returns a new string with only the command in it
+*/
+
+char *simplify(char *str)
+{
+	token_t *simple, *temp, *delete;
+	char *no_path = NULL, *no_path_helper = NULL;
+
+	simple = tokenicer(str, "/");
+	temp = simple;
+	delete = temp;
+	while (temp->next)
+	{
+		delete = temp;
+		temp = temp->next;
+	}
+	if (temp)
+	{
+		delete->next = NULL;
+		free(temp->token);
+		free(temp);
+	}
+	temp = simple;
+	if (temp->token)
+		no_path = _concat("/", temp->token);
+	while (temp->next)
+	{
+		temp = temp->next;
+		no_path_helper = _concat(strdup(no_path), "/");
+		free(no_path);
+		no_path = _concat(strdup(no_path_helper), temp->token);
+		free(no_path_helper);
+	}
+	if (simple)
+		free_list(simple);
+	return (no_path);
 }
