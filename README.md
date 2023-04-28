@@ -122,17 +122,17 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 creates a child process using 'fork()' and uses the execv system call to execute an external program within that process.  It waits for the command to execute successfully in that process and returns to the parent process where it resumes shell execution. If the process could not open correctly or execution was not possible, it issues error messages.
 
  <pre>
- Prototype: int _EXE_Cute(char **args)" 
+ Prototype: int _EXE_Cute(char **args) 
  </pre>
   ---
   <a name="main.h"></a>
   <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/main.h"target="_blank">main.h</a></h2>
   
-  this file contains the functions to be used for the shell project
+  this file contains the prototypes of the functions to be used for the shell project and the structure token_s for storing the tokens
   
   ---
   <a name="_token_separator.c"></a>
-  <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/_token_separator.c"target="_blank">_token_separator</a></h2>
+  <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/_token_separator.c"target="_blank">_token_separator.c</a></h2>
   receives a string and a delimiter and returns a linked list with the contents of the tokenized string.
   
    <pre>
@@ -156,7 +156,7 @@ creates a child process using 'fork()' and uses the execv system call to execute
  </pre>
   ---
   <a name="_stat_checker.c"></a>
-  <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/_stat_checker.c"target="_blank">_stat_checker</a></h2>
+  <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/_stat_checker.c"target="_blank">_stat_checker.c</a></h2>
 in the first function calls the stat system that checks if the command entered by the user exists and has the permissions to execute in the specified path.  Also, in this file is the second function that we use as our version of "strcat", we decided to implement it since the original function allocates memory and we considered it more convenient not to do so in this case to avoid later mummy errors.
 
  <pre>
