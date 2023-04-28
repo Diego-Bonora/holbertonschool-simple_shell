@@ -11,38 +11,34 @@ token_t *_stat_checker(token_t *head, token_t *path)
 {
 	token_t *temp;
 	struct stat *buff;
-	char *new_str = NULL, *compare_str = NULL, pwd[128];
-	char *pwd_bar = NULL, *bar = "/", *full_pwd = NULL;
-	int flag = 0;
+	char *new_str = NULL, *compare_str = NULL;
 
 	buff = malloc(sizeof(struct stat));
 	temp = path;
-	getcwd(pwd, sizeof(pwd));
-	pwd_bar = _concat(pwd, bar);
-	full_pwd = _concat(pwd_bar, head->token);
-
-	if (stat(full_pwd, buff) == 0)
-		flag = 1;
-	free(pwd_bar);
-	free(full_pwd);
-	if (stat(head->token, buff) == 0 && flag == 0)
-	{	free_list(path);
+	if (stat(head->token, buff) == 0)
+	{
+		free_list(path);
 		free(buff);
-		return (head); }
+		return (head);
+	}
 	while (temp)
-	{	new_str = _concat(temp->token, "/");
+	{
+		new_str = _concat(temp->token, "/");
 		compare_str = _concat(new_str, head->token);
 		if (stat(compare_str, buff) == 0)
-		{	free(head->token);
+		{
+			free(head->token);
 			head->token = strdup(compare_str);
 			free_list(path);
 			free(compare_str);
 			free(new_str);
 			free(buff);
-			return (head); }
+			return (head);
+		}
 		free(compare_str);
 		free(new_str);
-		temp = temp->next; }
+		temp = temp->next;
+	}
 	free(buff);
 	free_list(head);
 	free_list(path);
