@@ -75,6 +75,12 @@ char *_concat(char *str, char *add)
 	return (new);
 }
 
+/**
+ * simplify - simplyfies the input into only the command
+ * @str: the command given by the usr
+ * Return: Returns a new string with only the command in it
+*/
+
 char *simplify(char *str)
 {
 	token_t *simple, *temp;
@@ -82,7 +88,7 @@ char *simplify(char *str)
 
 	simple = tokenicer(str, "/");
 	temp = simple;
-	while(temp->next)
+	while (temp->next)
 	{
 		temp = temp->next;
 	}
