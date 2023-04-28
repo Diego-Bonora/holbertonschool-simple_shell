@@ -75,22 +75,31 @@ $
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 </pre>
  <details>
- <summary><h2>Flowcharts.</h2></summary>
+ <summary><h2>Flowchart.</h2></summary>
   
   ![Shell ](https://user-images.githubusercontent.com/124268926/235258205-f7d65531-8ad7-4e9e-a058-033616c93a5e.jpg)
 </details>
   <details>
  <summary><h2>description of the files.</h2></summary>
   
-  1. [ _shell.c ](#_shell.c)
-  2. [_execute.c](#_execute.c)
-  3. [main.h](#main.h)
-  4. [_token_separator.c](#_token_separator.c)
-  5. [_list_to_array.c](#_list_to_array.c)
-  6. [_path_finder.c ](#_path_finder.c)
-  7. [_stat_checker.c ](#_stat_checker.c)
-  8. [add_node_end.c](#add_node_end.c)
-  9. [free_list.c](#free_list.c)
+  1.  [ _shell.c ](#_shell.c)
+  
+  2.  [_execute.c](#_execute.c)
+  
+  3.  [main.h](#main.h)
+  
+  4.  [_token_separator.c](#_token_separator.c)
+  
+  5.  [_list_to_array.c](#_list_to_array.c)
+  
+  6.  [_path_finder.c ](#_path_finder.c)
+  
+  7.  [_stat_checker.c ](#_stat_checker.c)
+  
+  8.  [add_node_end.c](#add_node_end.c)
+  
+  9.  [free_list.c](#free_list.c)
+  
   10. [_env.c ](#_env.c)
   
   <a name="_shell.c"></a>
@@ -165,9 +174,8 @@ in the first function calls the stat system that checks if the command entered b
   ---
   <a name="free_list.c"></a>
   <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/free_list.c"target="_blank">free_list.c</a></h2>
-  fucnion that takes a linked list and frees the memory lodged in each of its registers.
-  
-     <pre>
+  function that takes a linked list and frees the memory lodged in each of its registers.
+ <pre>
  Prototype: void free_list(token_t *head)
  </pre>
   ---
@@ -175,7 +183,7 @@ in the first function calls the stat system that checks if the command entered b
   <h2><a href="https://github.com/Diego-Bonora/holbertonschool-simple_shell/blob/master/_env.c"target="_blank">_env.c</a></h2>
   function which, like the env function, prints the contents of the system environment variables, i.e. the contents of the external variable.
   
-     <pre>
+  <pre>
  Prototype: void _env(void)
  </pre>
   ---
