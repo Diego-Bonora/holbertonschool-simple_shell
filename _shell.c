@@ -24,7 +24,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		if (!args_token)
 		{	free(line);
 			continue; }
-		path_token = _getenv("PATH=");
+		path_token = _getenv("PATH=/");
 		command = _stat_checker(args_token, path_token);
 		if (!command)
 		{	_exit_ = 1;
